@@ -14,6 +14,10 @@ db.on 'load', ->
   app.listen port
   console.log "Listening on port #{port}"
 
+basic = express.basicAuth (user, pass, callback) ->
+  result = (user is process.env.HTTP_AUTH_USERNAME and pass is process.env.HTTP_AUTH_PASSWORD)
+  callback null, result
+
 app.set 'views', path.resolve(__dirname, '..', 'views')
 app.set 'view engine', 'jade'
 app.use express.json()
@@ -43,10 +47,10 @@ root =
   else
     ''
 
-app.get "/#{root}", (req, res, next) ->
+app.get "/#{root}", basic, (req, res, next) ->
   res.render 'index', title: 'Crash Reports', records: db.getAllRecords()
 
-app.get "/#{root}view/:id", (req, res, next) ->
+app.get "/#{root}view/:id", basic, (req, res, next) ->
   db.restoreRecord req.params.id, (err, record) ->
     return next err if err?
 
