@@ -23,9 +23,7 @@
     "mkdirp": "~0.3.5",
     "node-uuid": "~1.4.1",
     "temp": "0.7.0",
-    "wrench": "1.5.x"
-  },
-  "devDependencies": {
+    "wrench": "1.5.x",
     "coffee-script": "~1.6.2",
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.6.6",
