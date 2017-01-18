@@ -6,7 +6,9 @@
     "mini-breakpad-server": "bin/mini-breakpad-server"
   },
   "scripts": {
-    "prepublish": "grunt coffee"
+    "prepublish": "grunt coffee",
+    "postinstall": "grunt",
+    "start": "node lib/app.js"
   },
   "dependencies": {
     "decompress-zip": "0.0.4",
